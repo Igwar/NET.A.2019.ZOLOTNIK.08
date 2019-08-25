@@ -1,1 +1,1 @@
-# NET.A.2019.ZOLOTNIK.08
+Develop the Book class (ISBN, author, title, publisher, year of publication, number of pages, price) by overriding the necessary methods of the Object class for it. For class objects, implement equivalence and order relations (using appropriate interfaces).
