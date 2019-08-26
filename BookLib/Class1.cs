@@ -49,7 +49,7 @@ namespace BookLib
         }
       
         
-        /// <inheritdoc />
+        
         /// IEquatable override method 
         /// <summary>
         /// </summary>
@@ -145,7 +145,6 @@ namespace BookLib
             {
                 return 1;
             }
-            // ReSharper disable once StringCompareIsCultureSpecific.1
             return string.Compare(Name, book.Name);
         }
 
