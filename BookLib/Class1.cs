@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookLib 
 {
-    public class Book : IEquatable<Book>, IComparable, IComparable<Book>, IFormattable
+    public class Book : IEquatable<Book>, IComparable, IComparable<Book>
     {
 
         
@@ -49,7 +49,7 @@ namespace BookLib
         }
       
         
-        
+        /// <inheritdoc />
         /// IEquatable override method 
         /// <summary>
         /// </summary>
@@ -100,7 +100,7 @@ namespace BookLib
         /// <returns>string </returns>
         public override string ToString()
         {
-            return ToString("7", null);
+            return ToString("6");
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace BookLib
         /// <param name="format"></param>
         /// <param name="formatProvider"></param>
         /// <returns>string </returns>
-        public string ToString(string format, IFormatProvider formatProvider)
+        public string ToString(string format)
         {
             if (string.IsNullOrEmpty(format)) format = "5";
 
@@ -145,6 +145,7 @@ namespace BookLib
             {
                 return 1;
             }
+            // ReSharper disable once StringCompareIsCultureSpecific.1
             return string.Compare(Name, book.Name);
         }
 
