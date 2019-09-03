@@ -18,7 +18,7 @@ namespace BookListServiceLib
         /// Removes book from list
         /// </summary>
         /// <param name="book"></param>
-        void RemoveBookFromShop(Book book);
+        void RemoveBook(Book book);
 
         /// <summary>
         /// Finds book in list

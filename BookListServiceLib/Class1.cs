@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BookLib;
 using BookListStorageLib;
 using Finder;
+using Logger;
 namespace BookListServiceLib
 {
    
@@ -16,7 +17,7 @@ namespace BookListServiceLib
             /// </summary>
             private readonly IBookStorage bookStorage;
             private List<Book> books = new List<Book>();
-          
+           private readonly ILogger logger;
 
 
 
@@ -35,7 +36,10 @@ namespace BookListServiceLib
 
             }
 
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="book"></param>
 
             public void AddBook(Book book)
             {
@@ -43,22 +47,30 @@ namespace BookListServiceLib
                 {
                     throw new ArgumentNullException();
                 }
-
+              
                 books.Add(book);
-
+                logger.Debug("Book {book.name} successfully added.");
             }
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="book"></param>
 
-
-            public void RemoveBookFromShop(Book book)
+            public void RemoveBook(Book book)
             {
                 if (ReferenceEquals(book, null))
                 {
                     throw new ArgumentNullException();
                 }
                 books.Remove(book);
+                 logger.Debug("Book {book.name} successfully removd.");
             }
 
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="parameter"></param>
+            /// <returns></returns>
             public Book FindBook(IFinder parameter)
             {
                 if (ReferenceEquals(parameter, null))
@@ -85,16 +97,21 @@ namespace BookListServiceLib
                 books.AddRange(booksArray);
             }
 
-
+            /// <summary>
+            /// 
+            /// </summary>
             public void Save()
             {
                 bookStorage.SaveBooks(books);
+                 logger.Debug("List of books saved to the storage");
             }
-
+          
 
             public IEnumerable<Book> GetAllBooks()
             {
+                logger.Debug("List of books loaded from storage");
                 return bookStorage.GetBookList();
+                 
             }
 
 
